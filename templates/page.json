@@ -24,6 +24,29 @@
       "name": "Milan Pass Bundle",
       "settings": {}
     },
+    "17772270873d69c73b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ae72cfd_PLcayh": {
+          "type": "ai_gen_block_ae72cfd",
+          "settings": {
+            "image": "shopify://shop_images/smartbox-vector-logo.png",
+            "image_height": 250,
+            "object_fit": "contain",
+            "image_border_radius": 0,
+            "desktop_width_percent": 100,
+            "padding": 50,
+            "background_color": "#ffffff",
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ae72cfd_PLcayh"
+      ],
+      "settings": {}
+    },
     "rich_text_m8FU6B": {
       "type": "rich-text",
       "blocks": {
@@ -85,6 +108,7 @@
   "order": [
     "main",
     "bundles_milan_pass_Q7Jtzx",
+    "17772270873d69c73b",
     "rich_text_m8FU6B",
     "smartbox_redemption_Mififa"
   ]
