@@ -35,31 +35,22 @@
       endif
     -%}
 
-    <form id="SmartboxRedemptionForm" class="{{ form_class }}" novalidate>
-      <!-- Success Message -->
-      <div id="smartbox-success" class="smartbox-redemption__message smartbox-redemption__message--success" style="display: none;">
-        {{- 'icon-success.svg' | inline_asset_content -}}
-        <div class="smartbox-redemption__message-content">
-          <h3>{{ section.settings.success_title | default: 'Gift Card Creata!' }}</h3>
-          <p id="smartbox-success-text"></p>
-          <p class="smartbox-redemption__giftcard-code" id="smartbox-giftcard-code"></p>
-        </div>
-      </div>
+    {%- form 'contact', id: 'SmartboxRedemptionForm', class: form_class -%}
+      {{ form.errors | default_errors }}
 
-      <!-- Error Message -->
-      <div id="smartbox-error" class="smartbox-redemption__message smartbox-redemption__message--error" style="display: none;">
-        {{- 'icon-error.svg' | inline_asset_content -}}
-        <div class="smartbox-redemption__message-content">
-          <h3>{{ section.settings.error_title | default: 'Errore' }}</h3>
-          <p id="smartbox-error-text"></p>
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai contattato a breve.' }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ section.settings.error_message | default: 'Si è verificato un errore. Controlla i campi richiesti.' }}
+          </h2>
         </div>
-      </div>
-
-      <!-- Loading Message -->
-      <div id="smartbox-loading" class="smartbox-redemption__message smartbox-redemption__message--loading" style="display: none;">
-        <div class="smartbox-redemption__spinner"></div>
-        <p>{{ section.settings.loading_text | default: 'Verifica in corso...' }}</p>
-      </div>
+      {%- endif -%}
 
       <div class="smartbox-redemption__fields">
         <div class="field">
@@ -67,7 +58,8 @@
             class="field__input"
             type="text"
             id="SmartboxCode"
-            name="smartbox_code"
+            name="contact[Codice Smartbox]"
+            value="{{ form.smartbox_code }}"
             required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
             autocomplete="off"
@@ -84,155 +76,46 @@
             type="email"
             id="SmartboxEmail"
             class="field__input"
-            name="email"
+            name="contact[email]"
+            value="{{ form.email }}"
             spellcheck="false"
             autocapitalize="off"
             aria-required="true"
             required
             placeholder="{{ section.settings.email_placeholder | default: 'La tua email' }}"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="SmartboxEmail-error"
+            {% endif %}
           >
           <label class="field__label" for="SmartboxEmail">
             {{ section.settings.email_label | default: 'Email' }}
             <span aria-hidden="true">*</span>
           </label>
+
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="SmartboxEmail-error">
+              <span class="visually-hidden">Errore</span>
+              <span class="form__message">
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                Email {{ form.errors.messages.email }}
+              </span>
+            </small>
+          {%- endif -%}
         </div>
       </div>
 
       <div class="smartbox-redemption__button">
-        <button type="submit" class="button" id="smartbox-submit-btn">
+        <button type="submit" class="button">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
         </button>
       </div>
-    </form>
+    {%- endform -%}
   </div>
 </div>
 
-<script>
-(function() {
-  const form = document.getElementById('SmartboxRedemptionForm');
-  const codeInput = document.getElementById('SmartboxCode');
-  const emailInput = document.getElementById('SmartboxEmail');
-  const submitBtn = document.getElementById('smartbox-submit-btn');
-  const successMsg = document.getElementById('smartbox-success');
-  const errorMsg = document.getElementById('smartbox-error');
-  const loadingMsg = document.getElementById('smartbox-loading');
-  const successText = document.getElementById('smartbox-success-text');
-  const errorText = document.getElementById('smartbox-error-text');
-  const giftcardCode = document.getElementById('smartbox-giftcard-code');
-
-  // Configuration - Backend API endpoint
-  const BACKEND_API_URL = '{{ section.settings.backend_api_url | default: "/api/smartbox" }}';
-  const USE_TEST_MODE = {{ section.settings.test_mode | default: false }};
-
-  function hideAllMessages() {
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
-    loadingMsg.style.display = 'none';
-  }
-
-  function showSuccess(message, giftCardCode) {
-    hideAllMessages();
-    successText.textContent = message;
-    giftcardCode.textContent = `Codice Gift Card: ${giftCardCode}`;
-    successMsg.style.display = 'block';
-    successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function showError(message) {
-    hideAllMessages();
-    errorText.textContent = message;
-    errorMsg.style.display = 'block';
-    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function showLoading() {
-    hideAllMessages();
-    loadingMsg.style.display = 'block';
-  }
-
-  async function redeemSmartbox(code, email) {
-    // Call unified backend endpoint that handles all steps
-    const endpoint = USE_TEST_MODE ? `${BACKEND_API_URL}/test` : `${BACKEND_API_URL}/redeem`;
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        smartbox_code: code,
-        email: email
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Errore durante il riscatto');
-    }
-
-    const data = await response.json();
-
-    // Expected response format:
-    // {
-    //   "success": true,
-    //   "gift_card": {
-    //     "code": "XXXX-XXXX-XXXX",
-    //     "balance": 100.00
-    //   },
-    //   "message": "Gift card creata con successo!"
-    // }
-
-    return data;
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const code = codeInput.value.trim();
-    const email = emailInput.value.trim();
-
-    if (!code || !email) {
-      showError('Per favore, compila tutti i campi richiesti.');
-      return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      showError('Per favore, inserisci un indirizzo email valido.');
-      return;
-    }
-
-    submitBtn.disabled = true;
-    showLoading();
-
-    try {
-      // Call unified backend endpoint
-      // Backend handles: validation, gift card creation, email, marking as used
-      const result = await redeemSmartbox(code, email);
-
-      if (!result.success) {
-        throw new Error(result.error || 'Errore durante il riscatto');
-      }
-
-      // Show success
-      showSuccess(
-        result.message || `La tua gift card del valore di €${result.gift_card.balance} è stata creata con successo! Controlla la tua email.`,
-        result.gift_card.code
-      );
-
-      // Reset form
-      form.reset();
-
-    } catch (error) {
-      console.error('Redemption error:', error);
-      showError(error.message || 'Si è verificato un errore. Per favore riprova.');
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-})();
-</script>
 
 {% schema %}
 {
@@ -315,39 +198,15 @@
     },
     {
       "type": "text",
-      "id": "success_title",
-      "label": "Titolo messaggio successo",
-      "default": "Gift Card Creata!"
+      "id": "success_message",
+      "label": "Messaggio successo",
+      "default": "Richiesta inviata con successo! Verrai contattato a breve."
     },
     {
       "type": "text",
-      "id": "error_title",
-      "label": "Titolo messaggio errore",
-      "default": "Errore"
-    },
-    {
-      "type": "text",
-      "id": "loading_text",
-      "label": "Testo caricamento",
-      "default": "Verifica in corso..."
-    },
-    {
-      "type": "header",
-      "content": "Backend Settings"
-    },
-    {
-      "type": "text",
-      "id": "backend_api_url",
-      "label": "Backend API URL",
-      "default": "/api/smartbox",
-      "info": "URL del tuo backend per gestire i riscatti (es: https://your-backend.com/api/smartbox)"
-    },
-    {
-      "type": "checkbox",
-      "id": "test_mode",
-      "label": "Test Mode",
-      "default": false,
-      "info": "Abilita per usare l'endpoint di test che non crea gift card reali"
+      "id": "error_message",
+      "label": "Messaggio errore",
+      "default": "Si è verificato un errore. Controlla i campi richiesti."
     },
     {
       "type": "color_scheme",
