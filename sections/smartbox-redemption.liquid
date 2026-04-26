@@ -55,10 +55,10 @@
       <div class="smartbox-redemption__fields">
         <div class="field">
           <input
-            class="field__input"
+            class="field__input smartbox-code-input"
             type="text"
             id="SmartboxCode"
-            class="field__input smartbox-code-input"
+            name="contact[Codice Smartbox]"
             value="{{ form.smartbox_code }}"
             required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
