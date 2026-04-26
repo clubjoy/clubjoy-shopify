@@ -36,20 +36,56 @@
         "email_label": "Email",
         "email_placeholder": "La tua email",
         "button_text": "Riscatta Smartbox",
-        "success_title": "Gift Card Creata!",
-        "error_title": "Errore",
-        "loading_text": "Verifica in corso...",
-        "backend_api_url": "/api/smartbox",
-        "test_mode": false,
+        "success_message": "Richiesta inviata con successo! Verrai aggiornato a breve.",
+        "error_message": "Si è verificato un errore. Controlla i campi richiesti.",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "rich_text_m8FU6B": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bVQVqY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Riscatta la tua Smartbox",
+            "heading_size": "h1"
+          }
+        },
+        "text_kKg4kc": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Hai comprato una SMARTBOX?</h2>"
+          }
+        },
+        "text_rBPF9J": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Segui gli steps sotto per avere accesso alle nostre esperienze!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bVQVqY",
+        "text_kKg4kc",
+        "text_rBPF9J"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
     "main",
     "bundles_milan_pass_Q7Jtzx",
-    "smartbox_redemption_Mififa"
+    "smartbox_redemption_Mififa",
+    "rich_text_m8FU6B"
   ]
 }
