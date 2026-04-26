@@ -41,7 +41,7 @@
       {%- if form.posted_successfully? -%}
         <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
           {{- 'icon-success.svg' | inline_asset_content -}}
-          {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai contattato a breve.' }}
+          {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
         </h2>
       {%- elsif form.errors -%}
         <div class="form__message">
@@ -58,7 +58,7 @@
             class="field__input"
             type="text"
             id="SmartboxCode"
-            name="contact[Codice Smartbox]"
+            class="field__input smartbox-code-input"
             value="{{ form.smartbox_code }}"
             required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
@@ -75,7 +75,7 @@
             autocomplete="email"
             type="email"
             id="SmartboxEmail"
-            class="field__input"
+            class="field__input smartbox-email-input"
             name="contact[email]"
             value="{{ form.email }}"
             spellcheck="false"
@@ -107,6 +107,13 @@
         </div>
       </div>
 
+      <textarea
+        id="SmartboxForm-body-hidden"
+        name="contact[body]"
+        style="display: none !important;"
+        aria-hidden="true"
+      >{{ form.body }}</textarea>
+
       <div class="smartbox-redemption__button">
         <button type="submit" class="button">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
@@ -116,6 +123,29 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('SmartboxRedemptionForm');
+    var codeInput = document.querySelector('.smartbox-code-input');
+    var emailInput = document.querySelector('.smartbox-email-input');
+    var bodyHiddenField = document.getElementById('SmartboxForm-body-hidden');
+
+    if (!form || !codeInput || !emailInput || !bodyHiddenField) return;
+
+    form.addEventListener('submit', function () {
+      var code = codeInput.value.trim();
+      var email = emailInput.value.trim();
+      var parts = [];
+
+      parts.push('RICHIESTA RISCATTO SMARTBOX');
+      parts.push('');
+      parts.push('Codice Smartbox: ' + (code || '-'));
+      parts.push('Email cliente: ' + (email || '-'));
+
+      bodyHiddenField.value = parts.join('\n').trim();
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -200,7 +230,7 @@
       "type": "text",
       "id": "success_message",
       "label": "Messaggio successo",
-      "default": "Richiesta inviata con successo! Verrai contattato a breve."
+      "default": "Richiesta inviata con successo! Verrai aggiornato a breve."
     },
     {
       "type": "text",
