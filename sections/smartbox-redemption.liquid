@@ -1,4 +1,4 @@
-{{ 'smartbox-redemption.css' | asset_url | stylesheet_tag }}
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -12,10 +12,14 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .smartbox-hidden-field {
+    display: none !important;
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="smartbox-redemption page-width page-width--narrow section-{{ section.id }}-padding">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
       <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
@@ -29,13 +33,13 @@
     {%- endif -%}
 
     {%- liquid
-      assign form_class = 'smartbox-redemption__form isolate'
+      assign contact_form_class = 'isolate'
       if settings.animations_reveal_on_scroll
-        assign form_class = 'smartbox-redemption__form isolate scroll-trigger animate--slide-in'
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
       endif
     -%}
 
-    {%- form 'contact', id: 'SmartboxRedemptionForm', class: form_class -%}
+    {%- form 'contact', id: 'SmartboxRedemptionForm', class: contact_form_class -%}
       {{ form.errors | default_errors }}
 
       {%- if form.posted_successfully? -%}
@@ -52,14 +56,13 @@
         </div>
       {%- endif -%}
 
-      <div class="smartbox-redemption__fields">
+      <div class="contact__fields">
         <div class="field">
           <input
-            class="field__input smartbox-code-input"
+            class="field__input"
             type="text"
             id="SmartboxCode"
-            name="contact[Codice Smartbox]"
-            value="{{ form.smartbox_code }}"
+            class="field__input smartbox-code-input"
             required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
             autocomplete="off"
@@ -75,18 +78,18 @@
             autocomplete="email"
             type="email"
             id="SmartboxEmail"
-            class="field__input smartbox-email-input"
+            class="field__input"
             name="contact[email]"
-            value="{{ form.email }}"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             spellcheck="false"
             autocapitalize="off"
             aria-required="true"
             required
-            placeholder="{{ section.settings.email_placeholder | default: 'La tua email' }}"
             {% if form.errors contains 'email' %}
               aria-invalid="true"
               aria-describedby="SmartboxEmail-error"
             {% endif %}
+            placeholder="{{ section.settings.email_placeholder | default: 'La tua email' }}"
           >
           <label class="field__label" for="SmartboxEmail">
             {{ section.settings.email_label | default: 'Email' }}
@@ -110,11 +113,11 @@
       <textarea
         id="SmartboxForm-body-hidden"
         name="contact[body]"
-        style="display: none !important;"
+        class="smartbox-hidden-field"
         aria-hidden="true"
       >{{ form.body }}</textarea>
 
-      <div class="smartbox-redemption__button">
+      <div class="contact__button">
         <button type="submit" class="button">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
         </button>
