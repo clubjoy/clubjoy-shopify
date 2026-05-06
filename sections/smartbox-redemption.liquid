@@ -12,240 +12,128 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  .smartbox-hidden-field {
-    display: none !important;
-  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+
     {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="title {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
     {%- endif -%}
 
     {%- if section.settings.description != blank -%}
-      <div class="smartbox-redemption__description rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="rte">
         {{ section.settings.description }}
       </div>
     {%- endif -%}
 
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-
-    {%- form 'contact', id: 'SmartboxRedemptionForm', class: contact_form_class -%}
+    {%- form 'contact', id: 'SmartboxRedemptionForm', class: 'isolate' -%}
       {{ form.errors | default_errors }}
 
       {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {{- 'icon-success.svg' | inline_asset_content -}}
+        <h2 class="form-status">
           {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
         </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {{- 'icon-error.svg' | inline_asset_content -}}
-            {{ section.settings.error_message | default: 'Si è verificato un errore. Controlla i campi richiesti.' }}
-          </h2>
-        </div>
       {%- endif -%}
 
       <div class="contact__fields">
+
+        <!-- SMARTBOX CODE -->
         <div class="field">
           <input
+            type="text"
+            id="SmartboxCode"
+            name="contact[Codice Smartbox]"
             class="field__input"
-           <input
-  type="text"
-  id="SmartboxCode"
-  name="contact[smartbox_code]"
-  class="field__input smartbox-code-input"
-  required
-  placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
-  autocomplete="off"
->
+            required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
-            autocomplete="off"
           >
           <label class="field__label" for="SmartboxCode">
-            {{ section.settings.code_label | default: 'Codice Smartbox' }}
-            <span aria-hidden="true">*</span>
+            {{ section.settings.code_label | default: 'Codice Smartbox' }} *
           </label>
         </div>
 
-        <div class="field field--with-error">
+        <!-- EMAIL -->
+        <div class="field">
           <input
-            autocomplete="email"
             type="email"
             id="SmartboxEmail"
-            class="field__input"
             name="contact[email]"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            spellcheck="false"
-            autocapitalize="off"
-            aria-required="true"
+            class="field__input"
             required
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="SmartboxEmail-error"
-            {% endif %}
             placeholder="{{ section.settings.email_placeholder | default: 'La tua email' }}"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
           >
           <label class="field__label" for="SmartboxEmail">
-            {{ section.settings.email_label | default: 'Email' }}
-            <span aria-hidden="true">*</span>
+            {{ section.settings.email_label | default: 'Email' }} *
           </label>
-
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="SmartboxEmail-error">
-              <span class="visually-hidden">Errore</span>
-              <span class="form__message">
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                Email {{ form.errors.messages.email }}
-              </span>
-            </small>
-          {%- endif -%}
         </div>
-      </div>
 
-      <textarea
-        id="SmartboxForm-body-hidden"
-        name="contact[body]"
-        class="smartbox-hidden-field"
-        aria-hidden="true"
-      >{{ form.body }}</textarea>
+      </div>
 
       <div class="contact__button">
         <button type="submit" class="button">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
         </button>
       </div>
+
     {%- endform -%}
   </div>
 </div>
 
-name="contact[Codice Smartbox]" 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('SmartboxRedemptionForm');
-    var codeInput = document.querySelector('.smartbox-code-input');
-    var emailInput = document.querySelector('.smartbox-email-input');
-    var bodyHiddenField = document.getElementById('SmartboxForm-body-hidden');
-
-    if (!form || !codeInput || !emailInput || !bodyHiddenField) return;
-
-    form.addEventListener('submit', function () {
-      var code = codeInput.value.trim();
-      var email = emailInput.value.trim();
-      var parts = [];
-
-      parts.push('RICHIESTA RISCATTO SMARTBOX');
-      parts.push('');
-      parts.push('Codice Smartbox: ' + (code || '-'));
-      parts.push('Email cliente: ' + (email || '-'));
-
-      bodyHiddenField.value = parts.join('\n').trim();
-    });
-  });
-</script>
-
 {% schema %}
 {
   "name": "Smartbox Redemption",
-  "tag": "section",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
   "settings": [
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
       "default": "Riscatta la tua Smartbox",
       "label": "Titolo"
     },
     {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "Small"
-        },
-        {
-          "value": "h1",
-          "label": "Medium"
-        },
-        {
-          "value": "h0",
-          "label": "Large"
-        },
-        {
-          "value": "hxl",
-          "label": "Extra Large"
-        },
-        {
-          "value": "hxxl",
-          "label": "XXL"
-        }
-      ],
-      "default": "h1",
-      "label": "Dimensione titolo"
-    },
-    {
-      "type": "richtext",
+      "type": "text",
       "id": "description",
-      "label": "Descrizione",
-      "default": "<p>Inserisci il codice della tua Smartbox per ricevere una gift card da utilizzare nel nostro store.</p>"
+      "default": "Inserisci il codice della tua Smartbox per ricevere una gift card.",
+      "label": "Descrizione"
     },
     {
       "type": "text",
       "id": "code_label",
-      "label": "Label campo codice",
-      "default": "Codice Smartbox"
+      "default": "Codice Smartbox",
+      "label": "Label codice"
     },
     {
       "type": "text",
       "id": "code_placeholder",
-      "label": "Placeholder campo codice",
-      "default": "Inserisci il codice Smartbox"
+      "default": "Inserisci il codice Smartbox",
+      "label": "Placeholder codice"
     },
     {
       "type": "text",
       "id": "email_label",
-      "label": "Label campo email",
-      "default": "Email"
+      "default": "Email",
+      "label": "Label email"
     },
     {
       "type": "text",
       "id": "email_placeholder",
-      "label": "Placeholder campo email",
-      "default": "La tua email"
+      "default": "La tua email",
+      "label": "Placeholder email"
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Testo bottone",
-      "default": "Riscatta Smartbox"
+      "default": "Riscatta Smartbox",
+      "label": "Testo bottone"
     },
     {
       "type": "text",
       "id": "success_message",
-      "label": "Messaggio successo",
-      "default": "Richiesta inviata con successo! Verrai aggiornato a breve."
-    },
-    {
-      "type": "text",
-      "id": "error_message",
-      "label": "Messaggio errore",
-      "default": "Si è verificato un errore. Controlla i campi richiesti."
+      "default": "Richiesta inviata con successo!",
+      "label": "Messaggio successo"
     },
     {
       "type": "color_scheme",
@@ -254,18 +142,13 @@ name="contact[Codice Smartbox]"
       "default": "scheme-1"
     },
     {
-      "type": "header",
-      "content": "Section padding"
-    },
-    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
       "max": 100,
       "step": 4,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 36
+      "default": 36,
+      "label": "Padding top"
     },
     {
       "type": "range",
@@ -273,9 +156,8 @@ name="contact[Codice Smartbox]"
       "min": 0,
       "max": 100,
       "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 36
+      "default": 36,
+      "label": "Padding bottom"
     }
   ],
   "presets": [
