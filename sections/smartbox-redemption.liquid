@@ -30,15 +30,18 @@
     {%- endif -%}
 
     {%- form 'contact', id: 'SmartboxRedemptionForm', class: 'isolate' -%}
-      
+
       {{ form.errors | default_errors }}
 
-      <!-- SUCCESS / ERROR MESSAGES -->
-      {% if form.posted_successfully? and form.errors == blank %}
+      <!-- ✅ SUCCESS ONLY WHEN URL HAS contact_posted -->
+      {% if request.params.contact_posted == 'true' %}
         <h2 class="form-status">
           {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
         </h2>
-      {% elsif form.errors %}
+      {% endif %}
+
+      <!-- ERROR -->
+      {% if form.errors %}
         <div class="form__message">
           <h2 class="form-status">
             {{ section.settings.error_message | default: 'Si è verificato un errore. Controlla i campi richiesti.' }}
