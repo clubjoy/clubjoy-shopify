@@ -33,22 +33,18 @@
       </div>
     {%- endif -%}
 
-    <!-- ✅ FORM -->
     <form method="post" action="/contact" id="SmartboxRedemptionForm">
       <input type="hidden" name="form_type" value="contact">
       <input type="hidden" name="utf8" value="✓">
 
-      <!-- SUCCESS MESSAGE -->
       <div id="FormSuccess" class="smartbox-success">
         <h2 class="form-status">
           {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
         </h2>
       </div>
 
-      <!-- FIELDS -->
       <div id="FormFields" class="contact__fields">
 
-        <!-- SMARTBOX CODE -->
         <div class="field">
           <input
             type="text"
@@ -62,7 +58,6 @@
           </label>
         </div>
 
-        <!-- EMAIL -->
         <div class="field">
           <input
             type="email"
@@ -78,9 +73,8 @@
 
       </div>
 
-      <!-- BUTTON -->
       <div class="contact__button">
-        <button type="submit" class="button">
+        <button type="button" class="button" id="SmartboxSubmitBtn">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
         </button>
       </div>
@@ -89,36 +83,40 @@
   </div>
 </div>
 
-<!-- ✅ AJAX SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("SmartboxRedemptionForm");
   const success = document.getElementById("FormSuccess");
   const fields = document.getElementById("FormFields");
+  const button = document.getElementById("SmartboxSubmitBtn");
 
-  if (!form) return;
+  if (!form || !button) return;
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  button.addEventListener("click", function () {
+    const code = form.querySelector('input[name="contact[Codice Smartbox]"]');
+    const email = form.querySelector('input[name="contact[email]"]');
+
+    if (!code.value.trim() || !email.value.trim()) {
+      alert("Per favore compila tutti i campi.");
+      return;
+    }
 
     const data = new FormData(form);
 
     fetch("/contact", {
       method: "POST",
       body: data,
-      headers: {
-        "Accept": "application/json"
-      }
+      redirect: "manual"
     })
-    .then(response => {
-      if (response.ok) {
+    .then(function (response) {
+      if (response.ok || response.type === "opaqueredirect") {
         fields.style.display = "none";
         success.style.display = "block";
       } else {
         alert("Si è verificato un errore. Riprova.");
       }
     })
-    .catch(() => {
+    .catch(function () {
       alert("Si è verificato un errore. Riprova.");
     });
   });
