@@ -139,6 +139,58 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "1778094572d7b019bd": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_QpAwEM": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": ""
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_QpAwEM"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1778095048691958f6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5ebaee9_FqQqEA": {
+          "type": "ai_gen_block_5ebaee9",
+          "settings": {
+            "heading": "",
+            "smartbox_number_label": "Codice Smartbox",
+            "smartbox_number_placeholder": "Inserisci codice a 12 cifre",
+            "email_label": "Email",
+            "email_placeholder": "",
+            "button_text": "Riscatta",
+            "error_message": "Il codice Smartbox deve essere a 12 cifre: il numero dell'assegno regalo (9 cifre) e il codice di conferma (3 cifre)",
+            "desktop_width_percent": 100,
+            "heading_size": 32,
+            "border_radius": 8,
+            "input_border_radius": 4,
+            "button_border_radius": 4,
+            "background_color": "#f4f4f4",
+            "text_color": "#121212",
+            "input_border_color": "#cccccc",
+            "input_focus_color": "#012fa7",
+            "button_color": "#012fa7",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#0049ff",
+            "error_color": "#D82C0D"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5ebaee9_FqQqEA"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -146,6 +198,8 @@
     "17760159807ef248a0",
     "rich_text_6cbLXR",
     "multicolumn_d697mk",
-    "smartbox_redemption"
+    "smartbox_redemption",
+    "1778094572d7b019bd",
+    "1778095048691958f6"
   ]
 }
