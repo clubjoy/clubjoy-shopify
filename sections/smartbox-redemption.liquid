@@ -12,6 +12,10 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .smartbox-success {
+    display: none;
+  }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
@@ -29,39 +33,31 @@
       </div>
     {%- endif -%}
 
-    {%- form 'contact', id: 'SmartboxRedemptionForm', class: 'isolate' -%}
+    <!-- ✅ FORM -->
+    <form method="post" action="/contact" id="SmartboxRedemptionForm">
+      <input type="hidden" name="form_type" value="contact">
+      <input type="hidden" name="utf8" value="✓">
 
-      {{ form.errors | default_errors }}
-
-      <!-- ✅ SUCCESS ONLY WHEN URL HAS contact_posted -->
-      {% if request.params.contact_posted == 'true' %}
+      <!-- SUCCESS MESSAGE -->
+      <div id="FormSuccess" class="smartbox-success">
         <h2 class="form-status">
           {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
         </h2>
-      {% endif %}
+      </div>
 
-      <!-- ERROR -->
-      {% if form.errors %}
-        <div class="form__message">
-          <h2 class="form-status">
-            {{ section.settings.error_message | default: 'Si è verificato un errore. Controlla i campi richiesti.' }}
-          </h2>
-        </div>
-      {% endif %}
-
-      <div class="contact__fields">
+      <!-- FIELDS -->
+      <div id="FormFields" class="contact__fields">
 
         <!-- SMARTBOX CODE -->
         <div class="field">
           <input
             type="text"
-            id="SmartboxCode"
             name="contact[Codice Smartbox]"
             class="field__input"
             required
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
           >
-          <label class="field__label" for="SmartboxCode">
+          <label class="field__label">
             {{ section.settings.code_label | default: 'Codice Smartbox' }} *
           </label>
         </div>
@@ -70,29 +66,64 @@
         <div class="field">
           <input
             type="email"
-            id="SmartboxEmail"
             name="contact[email]"
             class="field__input"
             required
             placeholder="{{ section.settings.email_placeholder | default: 'La tua email' }}"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
           >
-          <label class="field__label" for="SmartboxEmail">
+          <label class="field__label">
             {{ section.settings.email_label | default: 'Email' }} *
           </label>
         </div>
 
       </div>
 
+      <!-- BUTTON -->
       <div class="contact__button">
         <button type="submit" class="button">
           {{ section.settings.button_text | default: 'Riscatta Smartbox' }}
         </button>
       </div>
 
-    {%- endform -%}
+    </form>
   </div>
 </div>
+
+<!-- ✅ AJAX SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("SmartboxRedemptionForm");
+  const success = document.getElementById("FormSuccess");
+  const fields = document.getElementById("FormFields");
+
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch("/contact", {
+      method: "POST",
+      body: data,
+      headers: {
+        "Accept": "application/json"
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        fields.style.display = "none";
+        success.style.display = "block";
+      } else {
+        alert("Si è verificato un errore. Riprova.");
+      }
+    })
+    .catch(() => {
+      alert("Si è verificato un errore. Riprova.");
+    });
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -101,7 +132,7 @@
     {
       "type": "text",
       "id": "heading",
-      "default": "Riscatta la tua Smartbox",
+      "default": "Goditi la tua Smartbox",
       "label": "Titolo"
     },
     {
@@ -145,12 +176,6 @@
       "id": "success_message",
       "default": "Richiesta inviata con successo!",
       "label": "Messaggio successo"
-    },
-    {
-      "type": "text",
-      "id": "error_message",
-      "default": "Si è verificato un errore. Controlla i campi richiesti.",
-      "label": "Messaggio errore"
     },
     {
       "type": "color_scheme",
