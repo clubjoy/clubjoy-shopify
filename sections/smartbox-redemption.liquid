@@ -60,10 +60,15 @@
         <div class="field">
           <input
             class="field__input"
-            type="text"
-            id="SmartboxCode"
-            class="field__input smartbox-code-input"
-            required
+           <input
+  type="text"
+  id="SmartboxCode"
+  name="contact[smartbox_code]"
+  class="field__input smartbox-code-input"
+  required
+  placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
+  autocomplete="off"
+>
             placeholder="{{ section.settings.code_placeholder | default: 'Inserisci il codice Smartbox' }}"
             autocomplete="off"
           >
@@ -126,6 +131,7 @@
   </div>
 </div>
 
+name="contact[Codice Smartbox]" 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('SmartboxRedemptionForm');
