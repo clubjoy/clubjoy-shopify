@@ -1,6 +1,402 @@
+{% doc %}
+  @prompt
+    In the "smartbox_redemption" section, add input validation to the first input field in the form so that it shows an inline error message below the field if the number entered has fewer than 12 digits. The error should prevent form submission until the condition is met.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-smartbox-redemption-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-smartbox-redemption__heading-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    margin: 0 0 24px;
+    text-align: center;
+  }
+
+  .ai-smartbox-redemption__form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-smartbox-redemption__field-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-smartbox-redemption__label-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .ai-smartbox-redemption__input-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  .ai-smartbox-redemption__input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.input_focus_color }};
+  }
+
+  .ai-smartbox-redemption__input-{{ ai_gen_id }}.error {
+    border-color: {{ block.settings.error_color }};
+  }
+
+  .ai-smartbox-redemption__error-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+    font-size: 14px;
+    display: none;
+    margin-top: 4px;
+  }
+
+  .ai-smartbox-redemption__error-{{ ai_gen_id }}.visible {
+    display: block;
+  }
+
+  .ai-smartbox-redemption__button-{{ ai_gen_id }} {
+    padding: 14px 28px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-smartbox-redemption__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-smartbox-redemption__button-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-smartbox-redemption-{{ ai_gen_id }} {
+      width: 100%;
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<smartbox-redemption-{{ ai_gen_id }}
+  class="ai-smartbox-redemption-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <h2 class="ai-smartbox-redemption__heading-{{ ai_gen_id }}">
+    {{ block.settings.heading }}
+  </h2>
+
+  <form class="ai-smartbox-redemption__form-{{ ai_gen_id }}" novalidate>
+    <div class="ai-smartbox-redemption__field-{{ ai_gen_id }}">
+      <label
+        for="smartbox-number-{{ ai_gen_id }}"
+        class="ai-smartbox-redemption__label-{{ ai_gen_id }}"
+      >
+        {{ block.settings.smartbox_number_label }}
+      </label>
+      <input
+        type="text"
+        id="smartbox-number-{{ ai_gen_id }}"
+        name="smartbox_number"
+        class="ai-smartbox-redemption__input-{{ ai_gen_id }}"
+        placeholder="{{ block.settings.smartbox_number_placeholder }}"
+        required
+        aria-describedby="smartbox-number-error-{{ ai_gen_id }}"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="12"
+      >
+      <div
+        id="smartbox-number-error-{{ ai_gen_id }}"
+        class="ai-smartbox-redemption__error-{{ ai_gen_id }}"
+        role="alert"
+      >
+        {{ block.settings.error_message }}
+      </div>
+    </div>
+
+    <div class="ai-smartbox-redemption__field-{{ ai_gen_id }}">
+      <label
+        for="email-{{ ai_gen_id }}"
+        class="ai-smartbox-redemption__label-{{ ai_gen_id }}"
+      >
+        {{ block.settings.email_label }}
+      </label>
+      <input
+        type="email"
+        id="email-{{ ai_gen_id }}"
+        name="email"
+        class="ai-smartbox-redemption__input-{{ ai_gen_id }}"
+        placeholder="{{ block.settings.email_placeholder }}"
+        required
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="ai-smartbox-redemption__button-{{ ai_gen_id }}"
+    >
+      {{ block.settings.button_text }}
+    </button>
+  </form>
+</smartbox-redemption-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SmartboxRedemption{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.form = this.querySelector('.ai-smartbox-redemption__form-{{ ai_gen_id }}');
+        this.smartboxInput = this.querySelector('#smartbox-number-{{ ai_gen_id }}');
+        this.errorMessage = this.querySelector('#smartbox-number-error-{{ ai_gen_id }}');
+        this.submitButton = this.querySelector('.ai-smartbox-redemption__button-{{ ai_gen_id }}');
+
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        this.smartboxInput.addEventListener('input', (e) => {
+          e.target.value = e.target.value.replace(/[^0-9]/g, '');
+          this.validateSmartboxNumber();
+        });
+
+        this.smartboxInput.addEventListener('blur', () => {
+          this.validateSmartboxNumber();
+        });
+
+        this.form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const isValid = this.validateSmartboxNumber();
+          
+          if (isValid) {
+            this.handleFormSubmit();
+          }
+        });
+      }
+
+      validateSmartboxNumber() {
+        const value = this.smartboxInput.value.trim();
+        const isValid = value.length === 12;
+
+        if (!isValid && value.length > 0) {
+          this.showError();
+          return false;
+        } else {
+          this.hideError();
+          return value.length === 12;
+        }
+      }
+
+      showError() {
+        this.smartboxInput.classList.add('error');
+        this.errorMessage.classList.add('visible');
+        this.smartboxInput.setAttribute('aria-invalid', 'true');
+      }
+
+      hideError() {
+        this.smartboxInput.classList.remove('error');
+        this.errorMessage.classList.remove('visible');
+        this.smartboxInput.setAttribute('aria-invalid', 'false');
+      }
+
+      handleFormSubmit() {
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData);
+        
+        console.log('Form submitted with data:', data);
+        
+        alert('Smartbox redemption submitted successfully!');
+      }
+    }
+
+    customElements.define('smartbox-redemption-{{ ai_gen_id }}', SmartboxRedemption{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Smartbox redemption",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Redeem your Smartbox"
+    },
+    {
+      "type": "text",
+      "id": "smartbox_number_label",
+      "label": "Smartbox number label",
+      "default": "Smartbox number"
+    },
+    {
+      "type": "text",
+      "id": "smartbox_number_placeholder",
+      "label": "Smartbox number placeholder",
+      "default": "Enter 12-digit number"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Redeem now"
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Error message",
+      "default": "Please enter a valid 12-digit Smartbox number"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Form border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "input_focus_color",
+      "label": "Input focus border",
+      "default": "#012fa7"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#012fa7"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover background",
+      "default": "#0049ff"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error",
+      "default": "#D82C0D"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smartbox redemption"
+    }
+  ]
+}
 {% endschema %}
