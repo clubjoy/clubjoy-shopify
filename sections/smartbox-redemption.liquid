@@ -33,13 +33,11 @@
       </div>
     {%- endif -%}
 
-    <form method="post" action="/contact" id="SmartboxRedemptionForm">
-      <input type="hidden" name="form_type" value="contact">
-      <input type="hidden" name="utf8" value="✓">
+    {% form 'contact', id: 'SmartboxRedemptionForm' %}
 
       <div id="FormSuccess" class="smartbox-success">
         <h2 class="form-status">
-          {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai aggiornato a breve.' }}
+          {{ section.settings.success_message | default: 'Richiesta inviata con successo! Verrai contattato a breve.' }}
         </h2>
       </div>
 
@@ -79,7 +77,8 @@
         </button>
       </div>
 
-    </form>
+    {% endform %}
+
   </div>
 </div>
 
@@ -108,16 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
       body: data,
       redirect: "manual"
     })
-    .then(function (response) {
-      if (response.ok || response.type === "opaqueredirect") {
-        fields.style.display = "none";
-        success.style.display = "block";
-      } else {
-        alert("Si è verificato un errore. Riprova.");
-      }
+    .then(function () {
+      fields.style.display = "none";
+      success.style.display = "block";
     })
     .catch(function () {
-      alert("Si è verificato un errore. Riprova.");
+      alert("Si è verificato un errore di rete. Riprova.");
     });
   });
 });
