@@ -45,6 +45,7 @@
       "block_order": [
         "ai_gen_block_ae72cfd_PLcayh"
       ],
+      "disabled": true,
       "settings": {}
     },
     "rich_text_m8FU6B": {
@@ -75,6 +76,7 @@
         "text_kKg4kc",
         "text_rBPF9J"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
@@ -87,10 +89,10 @@
     },
     "smartbox_redemption_Mififa": {
       "type": "smartbox-redemption",
+      "disabled": true,
       "name": "Smartbox Redemption",
       "settings": {
         "heading": "",
-        "heading_size": "h1",
         "description": "<p>Inserisci il codice della tua Smartbox per ricevere una gift card da utilizzare nel nostro store.</p>",
         "code_label": "Codice Smartbox",
         "code_placeholder": "Inserisci il codice Smartbox",
@@ -98,7 +100,6 @@
         "email_placeholder": "La tua email",
         "button_text": "Riscatta Smartbox",
         "success_message": "Richiesta inviata con successo! Verrai aggiornato a breve.",
-        "error_message": "Si è verificato un errore. Controlla i campi richiesti.",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
