@@ -1,0 +1,116 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "bundles_milan_pass_Q7Jtzx": {
+      "type": "bundles-milan-pass",
+      "disabled": true,
+      "name": "Milan Pass Bundle",
+      "settings": {}
+    },
+    "17772270873d69c73b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ae72cfd_PLcayh": {
+          "type": "ai_gen_block_ae72cfd",
+          "settings": {
+            "image": "shopify://shop_images/smartbox-vector-logo.png",
+            "image_height": 250,
+            "object_fit": "contain",
+            "image_border_radius": 0,
+            "desktop_width_percent": 100,
+            "padding": 50,
+            "background_color": "#ffffff",
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ae72cfd_PLcayh"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_m8FU6B": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bVQVqY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Riscatta la tua Smartbox",
+            "heading_size": "h1"
+          }
+        },
+        "text_kKg4kc": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Hai comprato una SMARTBOX?</h2>"
+          }
+        },
+        "text_rBPF9J": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Segui gli steps sotto per avere accesso alle nostre esperienze!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bVQVqY",
+        "text_kKg4kc",
+        "text_rBPF9J"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "smartbox_redemption_Mififa": {
+      "type": "smartbox-redemption",
+      "disabled": true,
+      "name": "Smartbox Redemption",
+      "settings": {
+        "heading": "",
+        "description": "<p>Inserisci il codice della tua Smartbox per ricevere una gift card da utilizzare nel nostro store.</p>",
+        "code_label": "Codice Smartbox",
+        "code_placeholder": "Inserisci il codice Smartbox",
+        "email_label": "Email",
+        "email_placeholder": "La tua email",
+        "button_text": "Riscatta Smartbox",
+        "success_message": "Richiesta inviata con successo! Verrai aggiornato a breve.",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bundles_milan_pass_Q7Jtzx",
+    "17772270873d69c73b",
+    "rich_text_m8FU6B",
+    "smartbox_redemption_Mififa"
+  ]
+}
