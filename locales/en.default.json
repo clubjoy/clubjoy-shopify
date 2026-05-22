@@ -1045,6 +1045,9 @@
         },
         "items_fulfilled_by_store": {
           "many": "The items you purchased will come from other stores."
+        },
+        "thank_you_item_label": {
+          "many": "%{count} articles"
         }
       },
       "order_payment_collection": {
@@ -1161,6 +1164,11 @@
       },
       "address_management": {
         "confirm_address_deletion": "Are you sure you want to delete the address {{address}} ?"
+      },
+      "remote_merchandise_only": {
+        "detail_item_label": {
+          "many": "{{count}} articles"
+        }
       }
     },
     "notices": {
@@ -1221,6 +1229,9 @@
         "load_more_items": {
           "many": "Load {{count}} more article"
         }
+      },
+      "discount_order_stacking": {
+        "many": "Order Discounts"
       }
     },
     "B2B": {
@@ -1293,7 +1304,16 @@
         "subscription_contracts": {
           "more_items": {
             "many": "{{count}} other products"
+          },
+          "product_count": {
+            "many": "{{count}} products"
           }
+        },
+        "updating_contracts": {
+          "many": "Updating {{count}} subscription agreements..."
+        },
+        "contracts_updated": {
+          "many": "{{count}} subscription agreements updated successfully"
         }
       }
     }
