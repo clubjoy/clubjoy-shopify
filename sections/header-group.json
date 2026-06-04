@@ -66,11 +66,16 @@
       "type": "custom-header-mobile",
       "name": "Custom Header Mobile",
       "settings": {}
+    },
+    "178056259452b02b13": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
     "announcement_bar_rppy6p",
     "header",
-    "custom_header_mobile_JhAbYa"
+    "custom_header_mobile_JhAbYa",
+    "178056259452b02b13"
   ]
 }

@@ -58,6 +58,13 @@
             "product": "{{product}}"
           }
         },
+        "text_ycdVCT": {
+          "type": "text",
+          "settings": {
+            "text": "Cancellazione gratuita entro 24h",
+            "text_style": "body"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -84,6 +91,7 @@
         "custom_liquid_KfdPe3",
         "quantity_selector",
         "subscriptions_app_block_ntgBnh",
+        "text_ycdVCT",
         "buy_buttons",
         "description",
         "share"
@@ -127,19 +135,15 @@
         "padding_bottom": 28
       }
     },
-    "google_reviews_jymm3d": {
-      "type": "google-reviews",
-      "name": "Google Reviews",
-      "settings": {
-        "background_color": "#f8f9fa",
-        "heading_color": "#333333"
-      }
+    "1780562917f755ee24": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "product_location_map_F8UbMq",
     "related-products",
-    "google_reviews_jymm3d"
+    "1780562917f755ee24"
   ]
 }
