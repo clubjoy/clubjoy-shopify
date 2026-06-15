@@ -1,205 +1,91 @@
-<section class="page-width esperienze-section">
-  <style>
-    .pw-inner { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
-    .esperienze-mobile { display: block; }
-    .esperienze-desktop { display: none; }
-    @media (min-width: 1024px) { .esperienze-mobile { display: none; } .esperienze-desktop { display: block; } }
-    .esperienze-section { padding: 2rem 0; box-sizing: border-box; }
-    .esperienze-mobile ul, .esperienze-desktop ul { list-style: none; margin: 0; padding: 0; }
-    .esperienze-mobile li { width: 100%; background: #fff; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-weight: 500; box-sizing: border-box; }
-    .esperienze-mobile li > a { display:flex; align-items:center; justify-content:space-between; width:100%; color:inherit; text-decoration:none; }
-  
-    .esperienze-desktop .esperienze-heading { text-align: center; margin-bottom: 2.5rem; }
-    .esperienze-desktop .esperienze-heading .prefix { display:inline-block; background:#c8ecf5; padding:0.25rem 0.6rem; border-radius:6px; font-weight:700; margin-right:.6rem; vertical-align:middle; }
-    .esperienze-desktop .esperienze-heading .suffix { display:inline-block; font-weight:700; vertical-align:middle; }
-    @media (min-width:1280px){ .esperienze-desktop .esperienze-heading .suffix { font-size:1.5rem; } }
-    .esperienze-desktop .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: start; }
-    .esperienze-desktop .col-header { display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; font-weight:700; }
-    .esperienze-desktop .col-header .title { display:inline-block; }
-    .esperienze-desktop ul { padding-left: 0; }
-    .esperienze-desktop li { margin-bottom: .6rem; }
-    .esperienze-desktop a, .esperienze-mobile a { color: #001952; text-decoration: none; font-weight: 500; }
-    .esperienze-desktop a:hover, .esperienze-mobile a:hover { text-decoration: underline; }
-    .esperienze-desktop li a { display:inline-block; padding-right:6px; }
-  </style>
-
-  <div class="pw-inner">
-    <!-- Mobile -->
-<div class="page-width">
-    <div class="esperienze-mobile">
-      <h2>{{ 'sections.esperienze.title' | t }}</h2>
-      <ul>
-        <li>
-          <a href="{{ routes.collections_url }}/ceramica">
-            <span>🏺 {{ 'sections.esperienze.ceramica' | t }}</span>
-            <span>→</span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ routes.collections_url }}/pittura">
-            <span>🎨 {{ 'sections.esperienze.pittura' | t }}</span>
-            <span>→</span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ routes.collections_url }}/cucina">
-            <span>🍝 {{ 'sections.esperienze.cucina' | t }}</span>
-            <span>→</span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ routes.collections_url }}/natura">
-            <span>🌿 {{ 'sections.esperienze.natura' | t }}</span>
-            <span>→</span>
-          </a>
-        </li>
-      </ul>
-          </div>
-    </div>
-
-    <!-- Desktop -->
-    <div class="esperienze-desktop">
-      <div class="esperienze-heading">
-        <span class="prefix">{{ 'sections.esperienze.prefix' | t }}</span>
-        <span class="suffix">{{ 'sections.esperienze.suffix' | t }}</span>
-      </div>
-
-      <div class="grid">
-        <!-- Ceramica (product_type=Ceramic) -->
-        <div>
-          <div class="col-header"><span class="title">🏺 {{ 'sections.esperienze.ceramica' | t }}</span></div>
-          <ul>
-            <li>
-              <a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.product_type={{ 'Ceramic' | url_encode }}">
-                {{ 'sections.esperienze.ceramica' | t }} a {{ 'sections.subfooter.milan' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type={{ 'Ceramic' | url_encode }}">
-                {{ 'sections.esperienze.ceramica' | t }} a {{ 'sections.subfooter.florence' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type={{ 'Ceramic' | url_encode }}">
-                {{ 'sections.esperienze.ceramica' | t }} a {{ 'sections.subfooter.turin' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type={{ 'Ceramic' | url_encode }}">
-                {{ 'sections.esperienze.ceramica' | t }} sulla {{ 'sections.subfooter.amalfi' | t }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pittura (product_type=Painting) -->
-        <div>
-          <div class="col-header"><span class="title">🎨 {{ 'sections.esperienze.pittura' | t }}</span></div>
-          <ul>
-            <li>
-              <a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.product_type={{ 'Painting' | url_encode }}">
-                {{ 'sections.esperienze.pittura' | t }} a {{ 'sections.subfooter.milan' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type={{ 'Painting' | url_encode }}">
-                {{ 'sections.esperienze.pittura' | t }} a {{ 'sections.subfooter.florence' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type={{ 'Painting' | url_encode }}">
-                {{ 'sections.esperienze.pittura' | t }} a {{ 'sections.subfooter.venice' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type={{ 'Painting' | url_encode }}">
-                {{ 'sections.esperienze.pittura' | t }} sulla {{ 'sections.subfooter.amalfi' | t }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Cucina (product_type=Cooking) -->
-        <div>
-          <div class="col-header"><span class="title">🍝 {{ 'sections.esperienze.cucina' | t }}</span></div>
-          <ul>
-            <li>
-              <a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} a {{ 'sections.subfooter.milan' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} a {{ 'sections.subfooter.rome' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} a {{ 'sections.subfooter.florence' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/sardegna?filter.p.m.custom.province={{ 'Sardegna' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} in {{ 'sections.subfooter.sardinia' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} alle {{ 'sections.subfooter.fivet' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type={{ 'Cooking' | url_encode }}">
-                {{ 'sections.esperienze.cucina' | t }} sulla {{ 'sections.subfooter.amalfi' | t }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Natura (product_type=Nature) -->
-        <div>
-          <div class="col-header"><span class="title">🌿 {{ 'sections.esperienze.natura' | t }}</span></div>
-          <ul>
-            <li>
-              <a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.product_type={{ 'Nature' | url_encode }}">
-                {{ 'sections.esperienze.natura' | t }} a {{ 'sections.subfooter.milan' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type={{ 'Nature' | url_encode }}">
-                {{ 'sections.esperienze.natura' | t }} a {{ 'sections.subfooter.florence' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type={{ 'Nature' | url_encode }}">
-                {{ 'sections.esperienze.natura' | t }} a {{ 'sections.subfooter.turin' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type={{ 'Nature' | url_encode }}">
-                {{ 'sections.esperienze.natura' | t }} alle {{ 'sections.subfooter.fivet' | t }}
-              </a>
-            </li>
-            <li>
-              <a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type={{ 'Nature' | url_encode }}">
-                {{ 'sections.esperienze.natura' | t }} sulla {{ 'sections.subfooter.amalfi' | t }}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<!-- Desktop -->
+<div class="esperienze-desktop">
+  <div class="esperienze-heading">
+    <span class="prefix">{{ 'sections.esperienze.prefix' | t }}</span>
+    <span class="suffix">{{ 'sections.esperienze.suffix' | t }}</span>
   </div>
-</section>
 
-{% schema %}
-{
-  "name": "Esperienze",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Esperienze"
-    }
-  ]
-}
-{% endschema %}
+  <div class="grid" style="grid-template-columns: repeat(8, 1fr);">
+
+    <!-- Milano & Como -->
+    <div>
+      <div class="col-header"><span class="title">🏙️ Milano & Como</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.m.custom.province={{ 'Como' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.m.custom.province={{ 'Como' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.m.custom.province={{ 'Como' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Roma -->
+    <div>
+      <div class="col-header"><span class="title">🤌 Roma</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Torino -->
+    <div>
+      <div class="col-header"><span class="title">⚡ Torino</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Firenze -->
+    <div>
+      <div class="col-header"><span class="title">🌸 Firenze</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Venezia -->
+    <div>
+      <div class="col-header"><span class="title">🚤 Venezia</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Costa Smeralda -->
+    <div>
+      <div class="col-header"><span class="title">🌴 Costa Smeralda</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/costa-smeralda?filter.p.m.custom.province={{ 'Costa Smeralda' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/costa-smeralda?filter.p.m.custom.province={{ 'Costa Smeralda' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/costa-smeralda?filter.p.m.custom.province={{ 'Costa Smeralda' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Costiera Amalfitana -->
+    <div>
+      <div class="col-header"><span class="title">🍋 Costiera Amalfitana</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+    <!-- Cinque Terre -->
+    <div>
+      <div class="col-header"><span class="title">🏔️ Cinque Terre</span></div>
+      <ul>
+        <li><a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
+        <li><a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
+        <li><a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type=Nature&filter.p.product_type=Other&filter.p.product_type=Music&filter.p.product_type=Mindfulness">✨ Altro</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
