@@ -1,3 +1,6 @@
+Eccolo completo:
+
+```liquid
 <section class="page-width esperienze-section">
   <style>
     .pw-inner { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
@@ -13,15 +16,11 @@
     .esperienze-desktop .esperienze-heading .prefix { display:inline-block; background:#c8ecf5; padding:0.25rem 0.6rem; border-radius:6px; font-weight:700; margin-right:.6rem; vertical-align:middle; }
     .esperienze-desktop .esperienze-heading .suffix { display:inline-block; font-weight:700; vertical-align:middle; }
 
-    .esperienze-desktop .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem 2.5rem;
-    }
-    .esperienze-desktop .col-header { display:flex; align-items:center; gap:.5rem; margin-bottom:.75rem; font-weight:700; font-size: 1rem; }
+    .esperienze-desktop .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem 2.5rem; }
+    .esperienze-desktop .col-header { display:flex; align-items:center; gap:.5rem; margin-bottom:.75rem; font-weight:700; font-size: inherit; }
     .esperienze-desktop ul { padding-left: 0; }
     .esperienze-desktop li { margin-bottom: .5rem; }
-    .esperienze-desktop a { color: #001952; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+    .esperienze-desktop a { color: #001952; text-decoration: none; font-weight: 500; font-size: inherit; }
     .esperienze-desktop a:hover { text-decoration: underline; }
   </style>
 
@@ -31,14 +30,14 @@
     <div class="esperienze-mobile">
       <h2>{{ 'sections.esperienze.title' | t }}</h2>
       <ul>
-        <li><a href="{{ routes.collections_url }}/milano"><span>🏙️ Milano & Como</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/roma"><span>🤌 Roma</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/torino"><span>⚡ Torino</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/firenze"><span>🌸 Firenze</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/venezia"><span>🚤 Venezia</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/costa-smeralda"><span>🌴 Costa Smeralda</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1"><span>🍋 Costiera Amalfitana</span><span>→</span></a></li>
-        <li><a href="{{ routes.collections_url }}/cinque-terre"><span>🏔️ Cinque Terre</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/milano"><span>Milano & Como</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/roma"><span>Roma</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/torino"><span>Torino</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/firenze"><span>Firenze</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/venezia"><span>Venezia</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/costa-smeralda"><span>Costa Smeralda</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1"><span>Costiera Amalfitana</span><span>→</span></a></li>
+        <li><a href="{{ routes.collections_url }}/cinque-terre"><span>Cinque Terre</span><span>→</span></a></li>
       </ul>
     </div>
 
@@ -51,11 +50,9 @@
 
       <div class="grid">
 
-        <!-- Riga 1 -->
-
         <!-- Milano & Como -->
         <div>
-          <div class="col-header">🏙️ Milano & Como</div>
+          <div class="col-header">Milano & Como</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.m.custom.province={{ 'Como' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/milano?filter.p.m.custom.province={{ 'Milano' | url_encode }}&filter.p.m.custom.province={{ 'Como' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -65,7 +62,7 @@
 
         <!-- Roma -->
         <div>
-          <div class="col-header">🤌 Roma</div>
+          <div class="col-header">Roma</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/roma?filter.p.m.custom.province={{ 'Roma' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -75,7 +72,7 @@
 
         <!-- Torino -->
         <div>
-          <div class="col-header">⚡ Torino</div>
+          <div class="col-header">Torino</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/torino?filter.p.m.custom.province={{ 'Torino' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -85,7 +82,7 @@
 
         <!-- Firenze -->
         <div>
-          <div class="col-header">🌸 Firenze</div>
+          <div class="col-header">Firenze</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/firenze?filter.p.m.custom.province={{ 'Firenze' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -93,11 +90,9 @@
           </ul>
         </div>
 
-        <!-- Riga 2 -->
-
         <!-- Venezia -->
         <div>
-          <div class="col-header">🚤 Venezia</div>
+          <div class="col-header">Venezia</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/venezia?filter.p.m.custom.province={{ 'Venezia' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -107,7 +102,7 @@
 
         <!-- Costa Smeralda -->
         <div>
-          <div class="col-header">🌴 Costa Smeralda</div>
+          <div class="col-header">Costa Smeralda</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/costa-smeralda?filter.p.m.custom.province={{ 'Costa Smeralda' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/costa-smeralda?filter.p.m.custom.province={{ 'Costa Smeralda' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -117,7 +112,7 @@
 
         <!-- Costiera Amalfitana -->
         <div>
-          <div class="col-header">🍋 Costiera Amalfitana</div>
+          <div class="col-header">Costiera Amalfitana</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/costiera-amalfitana-1?filter.p.m.custom.province={{ 'Costiera Amalfitana' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -127,7 +122,7 @@
 
         <!-- Cinque Terre -->
         <div>
-          <div class="col-header">🏔️ Cinque Terre</div>
+          <div class="col-header">Cinque Terre</div>
           <ul>
             <li><a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type=Cooking">🍝 Cucina</a></li>
             <li><a href="{{ routes.collections_url }}/cinque-terre?filter.p.m.custom.province={{ 'Cinque Terre' | url_encode }}&filter.p.product_type=Ceramic&filter.p.product_type=Painting&filter.p.product_type=Drawing&filter.p.product_type=Jewelry&filter.p.product_type=Crafts">🏺 Artigianato</a></li>
@@ -147,3 +142,4 @@
   "presets": [{ "name": "Esperienze" }]
 }
 {% endschema %}
+```
