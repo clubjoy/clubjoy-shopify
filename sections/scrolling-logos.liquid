@@ -1,20 +1,9 @@
 {{ 'scrolling-logos.css' | asset_url | stylesheet_tag }}
 
-{% assign logos = 'estRadio.webp,radioBocconi.webp,doubleyou.webp,laStampa.webp,laRepubblica.webp'
-  | split: ','
-%}
+{% assign logos = 'estRadio.webp,radioBocconi.webp,doubleyou.webp,laStampa.webp' | split: ',' %}
 
 <style>
-  .scrolling-logos-title-outer {
-    /* Mobile: double wrapper effect */
-  }
-  .scrolling-logos-title-inner {
-    /* Mobile: acts as second wrapper */
-  }
   @media (min-width: 1024px) {
-    .scrolling-logos-title-outer {
-      /* Desktop: single wrapper - remove inner padding */
-    }
     .scrolling-logos-title-inner {
       padding-left: 0;
       padding-right: 0;
@@ -69,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const clone1 = list.cloneNode(true);
   const clone2 = list.cloneNode(true);
+
   wrapper.appendChild(clone1);
   wrapper.appendChild(clone2);
 
