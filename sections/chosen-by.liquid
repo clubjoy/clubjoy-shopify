@@ -16,29 +16,32 @@
           <div class="chosen-by-logos-list js-chosen-by-list">
 
             {% assign logos = 'cafezal.webp,caffevergnano.webp,guarneri.webp,dream-factory.webp' | split: ',' %}
-
             {% assign company_urls = 'https://www.clubjoy.it/search?q=cafezal&options%5Bprefix%5D=last,https://www.clubjoy.it/search?q=vergano&options%5Bprefix%5D=last,https://www.clubjoy.it/search?q=guarneri&options%5Bprefix%5D=last,https://www.clubjoy.it/search?q=dream+factory&options%5Bprefix%5D=last' | split: ',' %}
 
             {% for i in (0..3) %}
-              <div class="logo-item">
-                {% if company_urls[i] != blank %}
-                  <a href="{{ company_urls[i] }}" target="_blank" rel="noopener" class="logo-link">
+              {% if logos[i] != blank %}
+                <div class="logo-item">
+                  {% if company_urls[i] != blank %}
+                    <a href="{{ company_urls[i] }}" target="_blank" rel="noopener" class="logo-link">
+                      <img
+                        src="{{ logos[i] | asset_url }}"
+                        alt=""
+                        loading="lazy"
+                        class="logo-image"
+                        onerror="this.closest('.logo-item').remove();"
+                      >
+                    </a>
+                  {% else %}
                     <img
                       src="{{ logos[i] | asset_url }}"
-                      alt="Company logo"
+                      alt=""
                       loading="lazy"
                       class="logo-image"
+                      onerror="this.closest('.logo-item').remove();"
                     >
-                  </a>
-                {% else %}
-                  <img
-                    src="{{ logos[i] | asset_url }}"
-                    alt="Company logo"
-                    loading="lazy"
-                    class="logo-image"
-                  >
-                {% endif %}
-              </div>
+                  {% endif %}
+                </div>
+              {% endif %}
             {% endfor %}
 
           </div>
@@ -56,118 +59,123 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!wrapper || !list || !container) return;
 
-  const fullWidth = list.offsetWidth;
+  setTimeout(() => {
+    const fullWidth = list.offsetWidth;
 
-  const clone1 = list.cloneNode(true);
-  const clone2 = list.cloneNode(true);
-  wrapper.appendChild(clone1);
-  wrapper.appendChild(clone2);
+    if (!fullWidth) return;
 
-  wrapper.style.setProperty('--chosen-by-scroll-distance', `-${fullWidth}px`);
+    const clone1 = list.cloneNode(true);
+    const clone2 = list.cloneNode(true);
 
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslateX = 0;
-  let animationPosition = 0;
-  let userInteractionTimeout;
-  let isUserInteracting = false;
+    wrapper.appendChild(clone1);
+    wrapper.appendChild(clone2);
 
-  function getCurrentAnimationPosition() {
-    const computedStyle = getComputedStyle(wrapper);
-    const matrix = computedStyle.transform;
+    wrapper.style.setProperty('--chosen-by-scroll-distance', `-${fullWidth}px`);
 
-    if (matrix === 'none') return 0;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslateX = 0;
+    let animationPosition = 0;
+    let userInteractionTimeout;
+    let isUserInteracting = false;
 
-    const values = matrix.split('(')[1].split(')')[0].split(',');
-    return parseFloat(values[4]) || 0;
-  }
+    function getCurrentAnimationPosition() {
+      const computedStyle = getComputedStyle(wrapper);
+      const matrix = computedStyle.transform;
 
-  function startManualControl(clientX) {
-    isDragging = true;
-    isUserInteracting = true;
-    startX = clientX;
+      if (matrix === 'none') return 0;
 
-    animationPosition = getCurrentAnimationPosition();
-    currentTranslateX = animationPosition;
+      const values = matrix.split('(')[1].split(')')[0].split(',');
+      return parseFloat(values[4]) || 0;
+    }
 
-    wrapper.classList.add('user-interacting');
-    container.classList.add('dragging');
+    function startManualControl(clientX) {
+      isDragging = true;
+      isUserInteracting = true;
+      startX = clientX;
 
-    clearTimeout(userInteractionTimeout);
-  }
+      animationPosition = getCurrentAnimationPosition();
+      currentTranslateX = animationPosition;
 
-  function handleManualMove(clientX) {
-    if (!isDragging) return;
+      wrapper.classList.add('user-interacting');
+      container.classList.add('dragging');
 
-    const deltaX = clientX - startX;
-    currentTranslateX = animationPosition + deltaX;
+      clearTimeout(userInteractionTimeout);
+    }
 
-    wrapper.style.transform = `translateX(${currentTranslateX}px)`;
-  }
+    function handleManualMove(clientX) {
+      if (!isDragging) return;
 
-  function endManualControl() {
-    if (!isDragging) return;
+      const deltaX = clientX - startX;
+      currentTranslateX = animationPosition + deltaX;
 
-    isDragging = false;
-    container.classList.remove('dragging');
+      wrapper.style.transform = `translateX(${currentTranslateX}px)`;
+    }
 
-    userInteractionTimeout = setTimeout(() => {
-      isUserInteracting = false;
-      wrapper.classList.remove('user-interacting');
+    function endManualControl() {
+      if (!isDragging) return;
 
-      const currentPos = getCurrentAnimationPosition();
-      const remainingDistance = fullWidth + currentPos;
-      const totalDistance = fullWidth;
-      const remainingRatio = remainingDistance / totalDistance;
+      isDragging = false;
+      container.classList.remove('dragging');
 
-      if (remainingRatio > 0) {
-        wrapper.style.animation = `chosen-by-scroll ${40 * remainingRatio}s linear infinite`;
-        wrapper.style.animationDelay = '0s';
+      userInteractionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+        wrapper.classList.remove('user-interacting');
+
+        const currentPos = getCurrentAnimationPosition();
+        const remainingDistance = fullWidth + currentPos;
+        const totalDistance = fullWidth;
+        const remainingRatio = remainingDistance / totalDistance;
+
+        if (remainingRatio > 0) {
+          wrapper.style.animation = `chosen-by-scroll ${40 * remainingRatio}s linear infinite`;
+          wrapper.style.animationDelay = '0s';
+        }
+      }, 2000);
+    }
+
+    container.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      startManualControl(e.clientX);
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      handleManualMove(e.clientX);
+    });
+
+    document.addEventListener('mouseup', endManualControl);
+
+    container.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      startManualControl(touch.clientX);
+    }, { passive: false });
+
+    container.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      handleManualMove(touch.clientX);
+    }, { passive: false });
+
+    container.addEventListener('touchend', endManualControl);
+    container.addEventListener('touchcancel', endManualControl);
+
+    container.addEventListener('selectstart', (e) => {
+      if (isDragging) e.preventDefault();
+    });
+
+    container.addEventListener('mouseenter', () => {
+      if (!isUserInteracting) {
+        wrapper.classList.add('manual-control');
       }
-    }, 2000);
-  }
+    });
 
-  container.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    startManualControl(e.clientX);
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    handleManualMove(e.clientX);
-  });
-
-  document.addEventListener('mouseup', endManualControl);
-
-  container.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    startManualControl(touch.clientX);
-  }, { passive: false });
-
-  container.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    handleManualMove(touch.clientX);
-  }, { passive: false });
-
-  container.addEventListener('touchend', endManualControl);
-  container.addEventListener('touchcancel', endManualControl);
-
-  container.addEventListener('selectstart', (e) => {
-    if (isDragging) e.preventDefault();
-  });
-
-  container.addEventListener('mouseenter', () => {
-    if (!isUserInteracting) {
-      wrapper.classList.add('manual-control');
-    }
-  });
-
-  container.addEventListener('mouseleave', () => {
-    if (!isUserInteracting) {
-      wrapper.classList.remove('manual-control');
-    }
-  });
+    container.addEventListener('mouseleave', () => {
+      if (!isUserInteracting) {
+        wrapper.classList.remove('manual-control');
+      }
+    });
+  }, 300);
 });
 </script>
 
@@ -237,46 +245,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "default": 36
     }
   ],
-  "blocks": [
-    {
-      "type": "logo",
-      "name": "Logo",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "logo",
-          "label": "Logo image"
-        },
-        {
-          "type": "text",
-          "id": "company_name",
-          "label": "Company name"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link (optional)"
-        }
-      ]
-    }
-  ],
+  "blocks": [],
   "presets": [
     {
-      "name": "Chosen By Logos",
-      "blocks": [
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        }
-      ]
+      "name": "Chosen By Logos"
     }
   ]
 }
