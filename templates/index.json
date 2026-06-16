@@ -66,6 +66,13 @@
     "chosen_by_9UgTfW": {
       "type": "chosen-by",
       "blocks": {
+        "logo_FFXfiy": {
+          "type": "logo",
+          "settings": {
+            "company_name": "",
+            "link": ""
+          }
+        },
         "logo_hjkwjM": {
           "type": "logo",
           "settings": {
@@ -96,6 +103,7 @@
         }
       },
       "block_order": [
+        "logo_FFXfiy",
         "logo_hjkwjM",
         "logo_CYQTb8",
         "logo_i7w6H7",
@@ -489,11 +497,17 @@
     "new_slideshow_pAaVMN": {
       "type": "new-slideshow",
       "disabled": true,
+      "custom_css": [],
       "name": "new slideshow",
       "settings": {}
     },
     "scrolling_logos_kKEpEp": {
       "type": "scrolling-logos",
+      "custom_css": [
+        "/* Hide CASAWI */.parlano-di-noi img:nth-child(2),.logo-slider img:nth-child(2) {display: none !important;}",
+        "/* Hide COVERFLEX */.parlano-di-noi img:nth-child(3),.logo-slider img:nth-child(3) {display: none !important;}",
+        "/* Hide CONOSCO UN POSTO */.parlano-di-noi img:nth-child(6),.logo-slider img:nth-child(6) {display: none !important;}"
+      ],
       "settings": {
         "section_title": "They talk about us",
         "section_title_it": "Parlano di noi"
@@ -501,6 +515,7 @@
     },
     "subfooter_yNr3V7": {
       "type": "subfooter",
+      "custom_css": [],
       "name": "Esperienze",
       "settings": {}
     },
