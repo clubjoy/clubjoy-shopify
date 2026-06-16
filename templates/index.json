@@ -65,50 +65,6 @@
     },
     "chosen_by_9UgTfW": {
       "type": "chosen-by",
-      "blocks": {
-        "logo_FFXfiy": {
-          "type": "logo",
-          "settings": {
-            "company_name": "",
-            "link": ""
-          }
-        },
-        "logo_hjkwjM": {
-          "type": "logo",
-          "settings": {
-            "company_name": "",
-            "link": ""
-          }
-        },
-        "logo_CYQTb8": {
-          "type": "logo",
-          "settings": {
-            "company_name": "",
-            "link": ""
-          }
-        },
-        "logo_i7w6H7": {
-          "type": "logo",
-          "settings": {
-            "company_name": "",
-            "link": ""
-          }
-        },
-        "logo_Ckp7TE": {
-          "type": "logo",
-          "settings": {
-            "company_name": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_FFXfiy",
-        "logo_hjkwjM",
-        "logo_CYQTb8",
-        "logo_i7w6H7",
-        "logo_Ckp7TE"
-      ],
       "name": "Chosen By Logos",
       "settings": {
         "title": "Prova esperienze con top brand",
@@ -505,8 +461,8 @@
       "type": "scrolling-logos",
       "custom_css": [
         "/* Hide CASAWI */.parlano-di-noi img:nth-child(2),.logo-slider img:nth-child(2) {display: none !important;}",
-        "/* Hide COVERFLEX */.parlano-di-noi img:nth-child(3),.logo-slider img:nth-child(3) {display: none !important;}",
-        "/* Hide CONOSCO UN POSTO */.parlano-di-noi img:nth-child(6),.logo-slider img:nth-child(6) {display: none !important;}"
+        " /* Hide COVERFLEX */.parlano-di-noi img:nth-child(3),.logo-slider img:nth-child(3) {display: none !important;}",
+        " /* Hide CONOSCO UN POSTO */.parlano-di-noi img:nth-child(6),.logo-slider img:nth-child(6) {display: none !important;}"
       ],
       "settings": {
         "section_title": "They talk about us",
@@ -540,8 +496,8 @@
         "ai_gen_block_17386de_yDkfKN": {
           "type": "ai_gen_block_17386de",
           "settings": {
-            "heading": "<p>Non è spam se ti fa sorridere.</p>",
-            "subtext": "<p>E' posta felice! 💙 Ricevi sconti ed inviti ad eventi segreti.</p>",
+            "heading": "<p>La posta che aspetti davvero💙</p>",
+            "subtext": "<p>Ricevi sconti ed inviti ad eventi segreti!</p>",
             "first_name_placeholder": "Nome",
             "last_name_placeholder": "Cognome",
             "email_placeholder": "Email",
