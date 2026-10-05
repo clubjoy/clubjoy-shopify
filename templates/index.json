@@ -113,6 +113,7 @@
         "column_6TNHW8",
         "column_raCjGF"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Come funziona Club Joy?",
@@ -164,6 +165,7 @@
       "blocks": {
         "ai_gen_block_9518840_6J4eEx": {
           "type": "ai_gen_block_9518840",
+          "disabled": true,
           "settings": {
             "section_title": "Latest news",
             "section_title_it": "Ultime news",
@@ -362,6 +364,12 @@
             "collection": "milano-1"
           }
         },
+        "featured_collection_CHxmLc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "milano-1"
+          }
+        },
         "featured_collection_yKxHpr": {
           "type": "featured_collection",
           "settings": {
@@ -377,6 +385,7 @@
       },
       "block_order": [
         "featured_collection_nfMpwG",
+        "featured_collection_CHxmLc",
         "featured_collection_yKxHpr",
         "featured_collection_dcbaAX"
       ],
@@ -409,6 +418,7 @@
         "ai_gen_block_1746ed3_Lf9jwC": {
           "type": "ai_gen_block_1746ed3",
           "name": "Split section",
+          "disabled": true,
           "settings": {
             "container_width": 1200,
             "section_padding_top": 0,
