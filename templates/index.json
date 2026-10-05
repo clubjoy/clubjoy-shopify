@@ -63,13 +63,47 @@
       "name": "banner",
       "settings": {}
     },
+    "179121199497d862a2": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9094cbd_HQw6az": {
+          "type": "ai_gen_block_9094cbd",
+          "settings": {
+            "title": "Chi ci ha scelto",
+            "subtitle": "",
+            "logo_1": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
+            "logo_2": "shopify://shop_images/logo-aurora.png",
+            "logo_3": "shopify://shop_images/logo-roscioli.png",
+            "logo_4": "shopify://shop_images/logo-barilla.png",
+            "logo_5": "shopify://shop_images/logo-lavazza.png",
+            "logo_6": "shopify://shop_images/logo-vergnano.png",
+            "desktop_width_percent": 100,
+            "columns_desktop": "3",
+            "columns_mobile": "3",
+            "logo_gap": 24,
+            "logo_max_width": 160,
+            "logo_height": 60,
+            "mobile_logo_height": 60
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9094cbd_HQw6az"
+      ],
+      "custom_css": [
+        "h2 {padding-top: 20px; padding-left: 20px; text-align: left;}"
+      ],
+      "settings": {}
+    },
     "chosen_by_9UgTfW": {
       "type": "chosen-by",
+      "disabled": true,
       "name": "Chosen By Logos",
       "settings": {
         "title": "Prova esperienze con top brand",
         "subtitle": "",
-        "logos_per_row": "4",
+        "logos_per_row": "5",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -156,8 +190,8 @@
         "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "blocks_cNdwgx": {
@@ -314,6 +348,43 @@
         "show_text_below": true,
         "accessibility_info": "Presentazione sul nostro brand"
       }
+    },
+    "1770381068094c86de": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_17386de_yDkfKN": {
+          "type": "ai_gen_block_17386de",
+          "settings": {
+            "heading": "<p>La posta che aspetti davvero💙</p>",
+            "subtext": "<p>Ricevi sconti ed inviti ad eventi segreti!</p>",
+            "first_name_placeholder": "Nome",
+            "last_name_placeholder": "Cognome",
+            "email_placeholder": "Email",
+            "button_label": "Iscriviti",
+            "success_message": "<p>Grazie per esserti Iscritto, controlla la tua inbox per updates!</p>",
+            "desktop_width_percent": 100,
+            "field_gap": 16,
+            "heading_size": 28,
+            "text_size": 16,
+            "background_color": "#f4f4f4",
+            "text_color": "#121212",
+            "button_color": "#012fa7",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#0049ff",
+            "input_border_color": "#cccccc",
+            "success_color": "#008060",
+            "error_color": "#d82c0d",
+            "border_radius": 12,
+            "input_border_radius": 20,
+            "button_border_radius": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_17386de_yDkfKN"
+      ],
+      "settings": {}
     },
     "interactive_columns_MCWta3": {
       "type": "interactive-columns",
@@ -492,54 +563,19 @@
     "1770380871a065dd16": {
       "type": "_blocks",
       "settings": {}
-    },
-    "1770381068094c86de": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_17386de_yDkfKN": {
-          "type": "ai_gen_block_17386de",
-          "settings": {
-            "heading": "<p>La posta che aspetti davvero💙</p>",
-            "subtext": "<p>Ricevi sconti ed inviti ad eventi segreti!</p>",
-            "first_name_placeholder": "Nome",
-            "last_name_placeholder": "Cognome",
-            "email_placeholder": "Email",
-            "button_label": "Iscriviti",
-            "success_message": "<p>Grazie per esserti Iscritto, controlla la tua inbox per updates!</p>",
-            "desktop_width_percent": 100,
-            "field_gap": 16,
-            "heading_size": 28,
-            "text_size": 16,
-            "background_color": "#f4f4f4",
-            "text_color": "#121212",
-            "button_color": "#012fa7",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#0049ff",
-            "input_border_color": "#cccccc",
-            "success_color": "#008060",
-            "error_color": "#d82c0d",
-            "border_radius": 12,
-            "input_border_radius": 20,
-            "button_border_radius": 20
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_17386de_yDkfKN"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "17660589096cc264ef",
     "enjoy_scroller_bd8E87",
     "banner_Vtfkjb",
+    "179121199497d862a2",
     "chosen_by_9UgTfW",
     "multicolumn_FYT6Ua",
     "featured_collection_MHrMaR",
     "blocks_cNdwgx",
     "slideshow_XwDPL6",
+    "1770381068094c86de",
     "interactive_columns_MCWta3",
     "video_embed_n9Kd7x",
     "featured_collection_bkajUw",
@@ -552,7 +588,6 @@
     "subfooter_yNr3V7",
     "1737406910fa2103c8",
     "custom_newsletter_gpKXw8",
-    "1770380871a065dd16",
-    "1770381068094c86de"
+    "1770380871a065dd16"
   ]
 }
