@@ -375,19 +375,12 @@
           "settings": {
             "collection": "firenze"
           }
-        },
-        "featured_collection_dcbaAX": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "venezia"
-          }
         }
       },
       "block_order": [
         "featured_collection_nfMpwG",
         "featured_collection_CHxmLc",
-        "featured_collection_yKxHpr",
-        "featured_collection_dcbaAX"
+        "featured_collection_yKxHpr"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
