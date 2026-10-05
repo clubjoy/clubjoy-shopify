@@ -66,30 +66,31 @@
     "179121199497d862a2": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_9094cbd_HQw6az": {
-          "type": "ai_gen_block_9094cbd",
+        "ai_gen_block_36af46c_mePQym": {
+          "type": "ai_gen_block_36af46c",
           "settings": {
-            "title": "Chi ci ha scelto",
-            "subtitle": "",
-            "logo_1": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
-            "logo_2": "shopify://shop_images/logo-aurora.png",
-            "logo_3": "shopify://shop_images/logo-roscioli.png",
-            "logo_4": "shopify://shop_images/logo-barilla.png",
-            "logo_5": "shopify://shop_images/logo-lavazza.png",
-            "logo_6": "shopify://shop_images/logo-vergnano.png",
+            "heading": "Ci hanno scelti",
             "desktop_width_percent": 100,
             "columns_desktop": "3",
             "columns_mobile": "2",
+            "heading_alignment": "left",
+            "vertical_padding": 32,
             "logo_gap": 24,
             "logo_max_width": 160,
-            "logo_height": 60,
-            "mobile_logo_height": 50
+            "logo_max_height": 80,
+            "show_placeholders": true,
+            "logo_1": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
+            "logo_2": "shopify://shop_images/logo-aurora.png",
+            "logo_3": "shopify://shop_images/logo-roscioli.png",
+            "logo_4": "shopify://shop_images/logo-vergnano.png",
+            "logo_5": "shopify://shop_images/logo-barilla.png",
+            "logo_6": "shopify://shop_images/logo-lavazza.png"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_9094cbd_HQw6az"
+        "ai_gen_block_36af46c_mePQym"
       ],
       "custom_css": [
         "h2 {padding-top: 20px; padding-left: 20px; text-align: left;}"
