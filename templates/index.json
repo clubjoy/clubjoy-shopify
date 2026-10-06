@@ -80,10 +80,10 @@
             "logo_max_height": 80,
             "show_placeholders": true,
             "logo_1": "shopify://shop_images/logo-barilla.png",
-            "logo_2": "shopify://shop_images/logo-lavazza.png",
-            "logo_3": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
-            "logo_4": "shopify://shop_images/logo-roscioli.png",
-            "logo_5": "shopify://shop_images/logo-vergnano.png",
+            "logo_2": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
+            "logo_3": "shopify://shop_images/logo-lavazza.png",
+            "logo_4": "shopify://shop_images/logo-vergnano.png",
+            "logo_5": "shopify://shop_images/logo-roscioli.png",
             "logo_6": "shopify://shop_images/logo-aurora.png"
           },
           "blocks": {}
