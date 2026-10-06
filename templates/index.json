@@ -506,7 +506,7 @@
             "columns_desktop": "3",
             "columns_mobile": "3",
             "heading_alignment": "left",
-            "vertical_padding": 8,
+            "vertical_padding": 24,
             "logo_gap": 8,
             "logo_max_width": 140,
             "logo_max_height": 80,
