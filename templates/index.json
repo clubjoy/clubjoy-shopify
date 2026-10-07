@@ -23,11 +23,11 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Esplora",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
+            "button_link_1": "https://www.clubjoy.it/collections/all",
+            "button_style_secondary_1": true,
             "button_label_2": "Regala",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_link_2": "https://www.clubjoy.it/pages/gift-cards",
+            "button_style_secondary_2": true
           }
         }
       },
