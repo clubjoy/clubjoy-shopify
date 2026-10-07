@@ -37,14 +37,14 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Dark_apron_name_removal.png",
+        "image": "shopify://shop_images/ChatGPT_Image_17_lug_2026_11_40_00.png",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "color_scheme": "scheme-b3826d76-ebcc-46fc-9b44-0c68db82f9e1",
+        "color_scheme": "scheme-3",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
@@ -170,7 +170,7 @@
       "settings": {
         "collection": "workshop-piu-popolari",
         "products_to_show": 3,
-        "title": "Fai spazio ad una bella storia",
+        "title": "Vivi le nostre esperienze più amate",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
