@@ -44,7 +44,7 @@
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-5cca2101-313d-481e-9e94-877258ac6728",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
@@ -72,9 +72,9 @@
             "columns_mobile": "3",
             "heading_alignment": "left",
             "vertical_padding": 0,
-            "logo_gap": 16,
-            "logo_max_width": 140,
-            "logo_max_height": 80,
+            "logo_gap": 8,
+            "logo_max_width": 80,
+            "logo_max_height": 60,
             "show_placeholders": false,
             "logo_1": "shopify://shop_images/logo-barilla.png",
             "logo_2": "shopify://shop_images/image_3d42a742-3550-4b47-9f08-2e68a775b19a.png",
@@ -428,13 +428,44 @@
         "padding_bottom": 36
       }
     },
+    "trustpilot_DfJhtV": {
+      "type": "trustpilot",
+      "settings": {}
+    },
+    "blocks_fyGkBH": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_36af46c_MKqybg": {
+          "type": "ai_gen_block_36af46c",
+          "settings": {
+            "heading": "Parlano di noi",
+            "desktop_width_percent": 100,
+            "columns_desktop": "3",
+            "columns_mobile": "3",
+            "heading_alignment": "left",
+            "vertical_padding": 24,
+            "logo_gap": 8,
+            "logo_max_width": 140,
+            "logo_max_height": 80,
+            "show_placeholders": false,
+            "logo_1": "shopify://shop_images/Est_Radio_logo_black_on_white-1.png",
+            "logo_2": "shopify://shop_images/La_Stampa_svg.webp",
+            "logo_3": "shopify://shop_images/images.png"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_36af46c_MKqybg"
+      ],
+      "custom_css": [
+        "h2 {padding-top: 20px; padding-left: 20px; text-align: left;}"
+      ],
+      "settings": {}
+    },
     "gift_cards_section_neDbjh": {
       "type": "gift-cards-section",
       "name": "Gift Card Section",
-      "settings": {}
-    },
-    "trustpilot_DfJhtV": {
-      "type": "trustpilot",
       "settings": {}
     },
     "17660579678ba9c53e": {
@@ -482,44 +513,6 @@
       },
       "block_order": [
         "ai_gen_block_1746ed3_Lf9jwC"
-      ],
-      "settings": {}
-    },
-    "new_slideshow_pAaVMN": {
-      "type": "new-slideshow",
-      "disabled": true,
-      "custom_css": [],
-      "name": "new slideshow",
-      "settings": {}
-    },
-    "blocks_fyGkBH": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_36af46c_MKqybg": {
-          "type": "ai_gen_block_36af46c",
-          "settings": {
-            "heading": "Parlano di noi",
-            "desktop_width_percent": 100,
-            "columns_desktop": "3",
-            "columns_mobile": "3",
-            "heading_alignment": "left",
-            "vertical_padding": 24,
-            "logo_gap": 8,
-            "logo_max_width": 140,
-            "logo_max_height": 80,
-            "show_placeholders": false,
-            "logo_1": "shopify://shop_images/Est_Radio_logo_black_on_white-1.png",
-            "logo_2": "shopify://shop_images/La_Stampa_svg.webp",
-            "logo_3": "shopify://shop_images/images.png"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_36af46c_MKqybg"
-      ],
-      "custom_css": [
-        "h2 {padding-top: 20px; padding-left: 20px; text-align: left;}"
       ],
       "settings": {}
     },
@@ -596,11 +589,10 @@
     "video_embed_n9Kd7x",
     "featured_collection_bkajUw",
     "collection_list_7QEjJK",
-    "gift_cards_section_neDbjh",
     "trustpilot_DfJhtV",
-    "17660579678ba9c53e",
-    "new_slideshow_pAaVMN",
     "blocks_fyGkBH",
+    "gift_cards_section_neDbjh",
+    "17660579678ba9c53e",
     "subfooter_yNr3V7",
     "1737406910fa2103c8",
     "1770381068094c86de",
