@@ -11,6 +11,7 @@
   "sections": {
     "map_p7Wpxe": {
       "type": "map",
+      "disabled": true,
       "name": "Product Map",
       "settings": {
         "api_key": "AIzaSyCQ3bPzVGn7UbU6BBDYHX6mB4xjb6tAR5o",
@@ -24,7 +25,7 @@
       "settings": {
         "show_collection_description": false,
         "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-baf73641-d65b-45d7-8a08-fcbedd1c7ae0"
       }
     },
     "product-grid": {
