@@ -546,15 +546,8 @@
         "heading_WT7Xtg": {
           "type": "heading",
           "settings": {
-            "heading": "Immagine banner",
-            "heading_size": "h1"
-          }
-        },
-        "text_f8FFyJ": {
-          "type": "text",
-          "settings": {
-            "text": "Fornisci ai clienti dettagli sulle immagini del banner o sul contenuto del modello.",
-            "text_style": "body"
+            "heading": "<strong>Il modo più bello di conoscere un posto</strong>",
+            "heading_size": "h2"
           }
         },
         "buttons_BtgKXV": {
@@ -571,7 +564,6 @@
       },
       "block_order": [
         "heading_WT7Xtg",
-        "text_f8FFyJ",
         "buttons_BtgKXV"
       ],
       "name": "t:sections.image-banner.presets.name",
