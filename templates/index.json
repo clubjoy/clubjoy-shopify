@@ -44,7 +44,7 @@
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "color_scheme": "scheme-5cca2101-313d-481e-9e94-877258ac6728",
+        "color_scheme": "scheme-b3826d76-ebcc-46fc-9b44-0c68db82f9e1",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
@@ -52,6 +52,7 @@
     },
     "enjoy_scroller_bd8E87": {
       "type": "enjoy-scroller",
+      "disabled": true,
       "custom_css": [],
       "settings": {}
     },
@@ -73,7 +74,7 @@
             "heading_alignment": "left",
             "vertical_padding": 0,
             "logo_gap": 8,
-            "logo_max_width": 80,
+            "logo_max_width": 110,
             "logo_max_height": 60,
             "show_placeholders": false,
             "logo_1": "shopify://shop_images/logo-barilla.png",
@@ -180,12 +181,12 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "color_scheme": "",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": true,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 60,
@@ -393,13 +394,13 @@
         "featured_collection_nfMpwG": {
           "type": "featured_collection",
           "settings": {
-            "collection": "milano-1"
+            "collection": "roma"
           }
         },
         "featured_collection_CHxmLc": {
           "type": "featured_collection",
           "settings": {
-            "collection": "milano-1"
+            "collection": "venezia"
           }
         },
         "featured_collection_yKxHpr": {
