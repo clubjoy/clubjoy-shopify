@@ -11,6 +11,7 @@
   "sections": {
     "enjoy_scroller_bd8E87": {
       "type": "enjoy-scroller",
+      "custom_css": [],
       "settings": {}
     },
     "banner_Vtfkjb": {
@@ -538,6 +539,55 @@
     "1770380871a065dd16": {
       "type": "_blocks",
       "settings": {}
+    },
+    "image_banner_QHNnMR": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_WT7Xtg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Immagine banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_f8FFyJ": {
+          "type": "text",
+          "settings": {
+            "text": "Fornisci ai clienti dettagli sulle immagini del banner o sul contenuto del modello.",
+            "text_style": "body"
+          }
+        },
+        "buttons_BtgKXV": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Esplora",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Regala",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_WT7Xtg",
+        "text_f8FFyJ",
+        "buttons_BtgKXV"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Dark_apron_name_removal.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
     }
   },
   "order": [
@@ -562,6 +612,7 @@
     "1737406910fa2103c8",
     "1770381068094c86de",
     "custom_newsletter_gpKXw8",
-    "1770380871a065dd16"
+    "1770380871a065dd16",
+    "image_banner_QHNnMR"
   ]
 }
