@@ -451,7 +451,10 @@
             "show_placeholders": false,
             "logo_1": "shopify://shop_images/Est_Radio_logo_black_on_white-1.png",
             "logo_2": "shopify://shop_images/La_Stampa_svg.webp",
-            "logo_3": "shopify://shop_images/images.png"
+            "logo_3": "shopify://shop_images/logo-dots-black_1.png",
+            "logo_4": "shopify://shop_images/Milano_Today_black_transparent_wordmark.png",
+            "logo_5": "shopify://shop_images/MADE_IT_black_wordmark_on_transparency.png",
+            "logo_6": "shopify://shop_images/la-repubblica-black_1.png"
           },
           "blocks": {}
         }
