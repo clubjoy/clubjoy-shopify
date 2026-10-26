@@ -108,21 +108,44 @@
         "padding_bottom": 36
       }
     },
+    "rich_text_YLnccU": {
+      "type": "rich-text",
+      "blocks": {
+        "text_dQ4arP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>oppure scrivici su whatsapp!</p>"
+          }
+        },
+        "button_GV3idM": {
+          "type": "button",
+          "settings": {
+            "button_label": "☎️",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_dQ4arP",
+        "button_GV3idM"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "smartbox_redemption": {
       "type": "smartbox-redemption",
-      "settings": {
-        "heading": "",
-        "description": "",
-        "code_label": "Codice Smartbox (12 cifre)",
-        "code_placeholder": "Inserisci il codice Smartbox",
-        "email_label": "Email",
-        "email_placeholder": "La tua email",
-        "button_text": "Riscatta",
-        "success_message": "Richiesta inviata con successo! Verrai contattato a breve.",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
+      "settings": {}
     },
     "1778094572d7b019bd": {
       "type": "apps",
@@ -151,6 +174,7 @@
     "rich_text_6cbLXR",
     "17760159807ef248a0",
     "multicolumn_d697mk",
+    "rich_text_YLnccU",
     "smartbox_redemption",
     "1778094572d7b019bd",
     "1778095048691958f6"
